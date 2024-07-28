@@ -10,7 +10,7 @@ function Header() {
         <div>
           <img
             className="px-5 py-2 size-50"
-            src="./src/assets/idfc.png"
+            src="./src/assets/logo-yob.png"
             alt="Logo"
           ></img>
         </div>

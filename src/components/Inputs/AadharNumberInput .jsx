@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AadharNumberInput = () => {
+const AadharNumberInput = ({ setBasicData }) => {
   const [aadharNumber, setAadharNumber] = useState("");
   const [error, setError] = useState("");
 
@@ -19,6 +19,7 @@ const AadharNumberInput = () => {
       return;
     }
     setAadharNumber(value);
+    setBasicData({ aadharNumber: value });
     if (value.length == 0) {
       setError("Please enter Aadhar number");
     } else if (value.length < 12) {

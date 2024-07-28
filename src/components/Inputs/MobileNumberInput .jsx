@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const MobileNumberInput = () => {
+const MobileNumberInput = ({ setBasicData }) => {
   const [mobileNumber, setMobileNumber] = useState("");
   const [error, setError] = useState("");
 
@@ -19,6 +19,7 @@ const MobileNumberInput = () => {
       return;
     }
     setMobileNumber(value);
+    setBasicData({ mobileNumber: value });
     if (value.length == 0) {
       setError("Please enter mobile number");
     } else if (value.length < 10) {

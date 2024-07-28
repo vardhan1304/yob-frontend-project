@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const PanNumberInput = () => {
+const PanNumberInput = ({ setBasicData }) => {
   const [panNumber, setpanNumber] = useState("");
   const [error, setError] = useState("");
 
@@ -9,6 +9,7 @@ const PanNumberInput = () => {
     const regex = /^[a-zA-Z0-9]+$/;
     const emailUpperCase = value.toUpperCase();
     setpanNumber(emailUpperCase);
+    setBasicData({ panNumber: emailUpperCase });
 
     if (value.length == 0) {
       setError("Please enter valid PAN number");

@@ -1,14 +1,15 @@
 import React, { useRef, useState } from "react";
 
-const DateInput = () => {
-  const [selectedDate, setSelectedDate] = useState("");
+const DateInput = ({ setBasicData }) => {
+  const [dateOfBirth, setDateOfBirth] = useState("");
   const [error, setError] = useState("");
   const ref = useRef();
 
   const handleInputChange = (e) => {
     const value = e.target.value;
 
-    setSelectedDate(value);
+    setDateOfBirth(value);
+    setBasicData({ dateOfBirth: value });
   };
 
   return (
@@ -20,7 +21,7 @@ const DateInput = () => {
         id="dob"
         ref={ref}
         max={getTodayDate()}
-        value={selectedDate}
+        value={dateOfBirth}
         //  onChange={({target}) => setSelectedDate(target?.value)}
         onChange={handleInputChange}
         onFocus={() => {
@@ -30,7 +31,7 @@ const DateInput = () => {
         }}
         onBlur={() => {
           if (ref.current) {
-            ref.current.type = selectedDate ? "date" : "text";
+            ref.current.type = dateOfBirth ? "date" : "text";
           }
         }}
         className={`w-full  px-2 py-2 rounded-xl border-2 focus:outline-none ${

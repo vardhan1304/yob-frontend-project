@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const EmailAddressInput = () => {
-  const [emailAddersss, setEmailAddersss] = useState("");
+const EmailAddressInput = ({ setBasicData }) => {
+  const [emailAddress, setEmailAddress] = useState("");
   const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
@@ -9,7 +9,8 @@ const EmailAddressInput = () => {
     const regex =
       /^[a-zA-Z0-9._]+@(gmail\.com|gmail\.co|hotmail\.com|yahoo\.com)$/;
 
-    setEmailAddersss(value);
+    setEmailAddress(value);
+    setBasicData({ emailAddress: value });
 
     if (value.length == 0) {
       setError("Please enter a valid email");
@@ -22,11 +23,11 @@ const EmailAddressInput = () => {
 
   return (
     <div className="relative hover:drop-shadow-md">
-      <label htmlFor="emailAddersss"></label>
+      <label htmlFor="emailAddress"></label>
       <input
         type="text"
-        id="emailAddersss"
-        value={emailAddersss}
+        id="emailAddress"
+        value={emailAddress}
         onChange={handleInputChange}
         placeholder="Email Address"
         className={`w-full px-2 py-2 rounded-xl border-2 focus:outline-none ${
